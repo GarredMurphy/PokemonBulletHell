@@ -12,21 +12,72 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
         genericBulletStatic = genericBullet;
     }
 
-    public static void Use(Vector3 position, bool player, int MoveID)
+    public static void Use(Vector3 position, bool player, int MoveID)  //I plan to heavily rewrite how moves work in the game. in future versions, use will take more parameters
     {
+        GameObject bulletsCreated;
+        BasicBullet newBulletScript;
+
+        short reverse = 1;
+        if (player != true)
+        {
+            reverse = -1;
+        }
+
         switch (MoveID)
-            {
+        {
 
-            case 0:  //test
+            case 0:  // water gun
 
-                GameObject newBullet = Instantiate(genericBulletStatic);
-                newBullet.transform.position = position;
-                BasicBullet newBulletScript = newBullet.GetComponent<BasicBullet>();
+                for (int i = 0; i < 10; i++)
+                {
+                    bulletsCreated = Instantiate(genericBulletStatic);
+                    bulletsCreated.transform.position = position;
+                    newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
+                    newBulletScript.player = player;
 
-                newBulletScript.velocity.y = 0.01f;
+                    newBulletScript.velocity.y = 0.01f * i * reverse;
+
+                }
                 break;
-            case 1:  //flamethrower
-                GameObject firestream[10];
+
+            case 1: // flame thrower
+                for (int i = 0; i < 10; i++)
+                {
+                    bulletsCreated = Instantiate(genericBulletStatic);
+                    bulletsCreated.transform.position = position;
+                    newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
+                    newBulletScript.player = player;
+
+                    newBulletScript.velocity.y = 0.01f * i * reverse;
+                    newBulletScript.velocity.x = Random.Range(0.005f, -0.005f);
+
+                }
+                break;
+            case 2: // fireblast
+                for (int i = 0; i < 10; i++)
+                {
+
+
+                    bulletsCreated = Instantiate(genericBulletStatic);
+                    bulletsCreated.transform.position = position;
+                    newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
+                    newBulletScript.player = player;
+
+                    newBulletScript.velocity.y = 0.07f;
+
+                    newBulletScript.velocity.x = 0.01f * (2 - (i % 5));
+
+                    if (i < 5)
+                    {
+                        newBulletScript.velocity.y *= .5f;
+                        newBulletScript.velocity.x *= .5f;
+                    }
+                   
+                    newBulletScript.velocity.y *= reverse;
+
+                    
+                }
+
                 break;
         }
     }

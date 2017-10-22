@@ -14,7 +14,6 @@ public class BasicBullet : MonoBehaviour {  // i will probably add more kinds of
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
     private void FixedUpdate()
@@ -26,6 +25,8 @@ public class BasicBullet : MonoBehaviour {  // i will probably add more kinds of
     {
         GameObject hitobject = collision.gameObject;
 
+        //need to program code for bullets to destroy themselves
+        
     }
 }
 

@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\BasicBullet.cs" />
     <Compile Include="Assets\BasicPokemon.cs" />
+    <Compile Include="Assets\CharizardClass.cs" />
     <Compile Include="Assets\CurrentState.cs" />
     <Compile Include="Assets\Move.cs" />
     <Compile Include="Assets\PlayerScript.cs" />
