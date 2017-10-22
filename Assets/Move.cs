@@ -35,7 +35,7 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
                     newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
                     newBulletScript.player = player;
 
-                    newBulletScript.velocity.y = 0.01f * i * reverse;
+                    newBulletScript.velocity.y = 0.01f * (i + 1) * reverse;
 
                 }
                 break;
@@ -48,7 +48,7 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
                     newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
                     newBulletScript.player = player;
 
-                    newBulletScript.velocity.y = 0.01f * i * reverse;
+                    newBulletScript.velocity.y = 0.01f * (i + 1) * reverse;
                     newBulletScript.velocity.x = Random.Range(0.005f, -0.005f);
 
                 }

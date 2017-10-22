@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-        if (playerPokemon.charge >= 300)     //in future edits i probably will move the place where it checks the charge to someplace else;
+        if (playerPokemon.charge >= 100)     //in future edits i probably will move the place where it checks the charge to someplace else;
         {
             if (Input.GetButton("Fire1"))
             {

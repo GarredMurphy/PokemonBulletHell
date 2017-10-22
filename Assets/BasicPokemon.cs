@@ -18,6 +18,7 @@ public class BasicPokemon : MonoBehaviour { // I am using type object for pokemo
     void Start () {
         health = 1; //for now all pokemon will have 1 health, this will be changed later.
         charge = 0;
+        player = false;
 	}
 	
 	// Update is called once per frame
@@ -30,15 +31,26 @@ public class BasicPokemon : MonoBehaviour { // I am using type object for pokemo
         {
             Destroy(gameObject);
         }
-        if (charge < 300)
+        if (charge < 100)
         { charge++; }
+
+
+        if (player == false)
+            if (charge >= 100)
+            {
+                useMove(1);
+                charge = 0;
+            }
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("hit something not a bullet");
         BasicBullet hitobject = collision.gameObject.GetComponent<BasicBullet>();
         if (hitobject != null)
         {
+            Debug.Log("hit something not a bullet");
             if (hitobject.player != player)
             health -= 1;
         }
@@ -59,24 +71,3 @@ public class BasicPokemon : MonoBehaviour { // I am using type object for pokemo
         }
     }
 }
-
-public class Charizard : BasicPokemon
-{
-    private void Start()
-    {
-
-    }
-   
-};
-
-public class Squirtle : BasicPokemon
-{
-    Squirtle()
-    {
-        Move1 = 0;
-        Move1 = 0;
-    }
-
-};
-
-

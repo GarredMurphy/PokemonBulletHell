@@ -19,6 +19,11 @@ public class BasicBullet : MonoBehaviour {  // i will probably add more kinds of
     private void FixedUpdate()
     {
         gameObject.transform.position += velocity;
+
+        if (gameObject.transform.position.y > 10 || gameObject.transform.position.y < -10 || gameObject.transform.position.x > 10 || gameObject.transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
