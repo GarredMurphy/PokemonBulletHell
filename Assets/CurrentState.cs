@@ -34,6 +34,11 @@ class Overworld : StateSuperClass  //Battlesceen is active
 
 };
 
+class StartBattleScren : StateSuperClass  //The state immediately before the battlescreen.
+{
+
+};
+
 class BattleScreen : StateSuperClass  //You are moving around in the overworld
 {
 
