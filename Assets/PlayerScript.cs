@@ -22,7 +22,6 @@ public class PlayerScript : MonoBehaviour {
         {
             if (Input.GetButton("Fire1"))
             {
-                playerPokemon.charge = 0;
                 playerPokemon.useMove(1);
             }
             else if (Input.GetButton("Fire2"))
