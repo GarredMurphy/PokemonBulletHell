@@ -40,17 +40,11 @@ public class levelGenerator : MonoBehaviour {//  I am using an L-system for this
             PokemonListStatic[i] = PokemonList[i];
         }
 
-        lsystemModified = recursivestring(lsystem, recursions);
-
-        recursions = Random.Range(0, 5);
-
-        int seedLength  = Random.Range(3, 8);
-
-
+        int seedLength = Random.Range(1, 4);
 
         for (int i = 0; i < seedLength; i++)
         {
-            int chosenletter = Random.Range(1, 5);
+            int chosenletter = Random.Range(1, 4);
             switch (chosenletter)
             {
                 case 1:
@@ -62,13 +56,20 @@ public class levelGenerator : MonoBehaviour {//  I am using an L-system for this
                 case 3:
                     lsystem += "C";
                     break;
-                case 4:
-                    lsystem += "D";
-                    break;
+
 
             }
+            lsystem += "A";
 
         }
+
+        recursions = Random.Range(2, 4);
+
+        
+
+        lsystemModified = recursivestring(lsystem, recursions);
+
+        
 
 
 
@@ -88,10 +89,10 @@ public class levelGenerator : MonoBehaviour {//  I am using an L-system for this
 
 
 
-        if (timetonextwave >= 6)
+        if (timetonextwave >= 4)
         {
             
-            timetonextwave -= 6;
+            timetonextwave -= 4;
             if (index < lsystemModified.Length)
                 callNextPokemon();
         }
@@ -105,10 +106,9 @@ public class levelGenerator : MonoBehaviour {//  I am using an L-system for this
     {
         if (recursionsremaining > 0)
         {
-            oldString.Replace("D", "DDD");
-            oldString.Replace("C", "CCD");
-            oldString.Replace("B", "CBC");
-            oldString.Replace("A", "ABB");
+            oldString = oldString.Replace("C", "DC");
+            oldString = oldString.Replace("B", "CBB");
+            oldString = oldString.Replace("A", "BA");
 
             return recursivestring(oldString, recursionsremaining - 1);
         }

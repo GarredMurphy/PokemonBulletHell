@@ -70,7 +70,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 392}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 80
+  controlID: 81
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -437,7 +437,7 @@ MonoBehaviour:
     width: 1002
     height: 966
   m_SceneLighting: 0
-  lastFramingTime: 20245.340781724426
+  lastFramingTime: 108.06462930451865
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
@@ -547,19 +547,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Pokemon
+    - Assets/scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Pokemon
+  - Assets/scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Garred\Documents\Pokemon Bullet Hell
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8a250000
-    m_LastClickedID: 9610
-    m_ExpandedIDs: 00000000ce2400004826000000ca9a3bffffff7f
+    m_SelectedIDs: 2c260000
+    m_LastClickedID: 9772
+    m_ExpandedIDs: 00000000ce2400005626000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -587,7 +587,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ce24000048260000
+    m_ExpandedIDs: 00000000ce24000056260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -696,9 +696,9 @@ MonoBehaviour:
     height: 292
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 60260000
-    m_LastClickedID: 9824
-    m_ExpandedIDs: 7845fbffe4fbfffff4ffffff00000000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 2611feffea11feffc412feffe4fbffff000000008a260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
