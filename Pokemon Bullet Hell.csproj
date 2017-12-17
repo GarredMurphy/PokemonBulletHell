@@ -78,18 +78,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CurrentState.cs" />
-    <Compile Include="Assets\PlayerScript.cs" />
     <Compile Include="Assets\scripts\ArceusClass.cs" />
     <Compile Include="Assets\scripts\BasicBullet.cs" />
     <Compile Include="Assets\scripts\BasicPokemon.cs" />
+    <Compile Include="Assets\scripts\BulbasaurClass.cs" />
     <Compile Include="Assets\scripts\CharizardClass.cs" />
+    <Compile Include="Assets\scripts\CurrentState.cs" />
     <Compile Include="Assets\scripts\ElectricBulletScript.cs" />
     <Compile Include="Assets\scripts\FireBulletScript.cs" />
+    <Compile Include="Assets\scripts\MagikarpClass.cs" />
     <Compile Include="Assets\scripts\Move.cs" />
     <Compile Include="Assets\scripts\PikachuClass.cs" />
+    <Compile Include="Assets\scripts\PlayerScript.cs" />
     <Compile Include="Assets\scripts\SquirtleClass.cs" />
     <Compile Include="Assets\scripts\WaterBulletScript.cs" />
+    <Compile Include="Assets\scripts\levelGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

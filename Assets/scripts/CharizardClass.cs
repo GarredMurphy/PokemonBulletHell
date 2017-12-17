@@ -6,9 +6,8 @@ public class CharizardClass : BasicPokemon {
 
 	// Use this for initialization
 	void Start () {
-        playerBool = false;
         health = 1; //for now all pokemon will have 1 health, this will be changed later.
-        charge = 0;
+        charge = 100;
         Move1 = 2;
         Move2 = 1;
         Move3 = 3;

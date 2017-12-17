@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicPokemon : MonoBehaviour { // I am using type object for pokemon
+public class BasicPokemon : MonoBehaviour { // I am using type object design pattern for pokemon
 
     // Use this for initialization
 
@@ -15,14 +15,18 @@ public class BasicPokemon : MonoBehaviour { // I am using type object for pokemo
 
     public int charge;
     public int reload;  //in later edits, both charge and reload will be used to determine if a move can be used.
-    int movecycle;
+    //int movecycle;
+
+    public Vector3 targetLocation;
+    public float toTargetspeed = .1f;
 
     void Start () {
         health = 1; //for now all pokemon will have 1 health, this will be changed later.
         charge = 0;  
         reload = 100;
         playerBool = false;
-        movecycle = 1;
+
+        //movecycle = 1;
         
 	}
 	
@@ -32,6 +36,7 @@ public class BasicPokemon : MonoBehaviour { // I am using type object for pokemo
 	}
     private void FixedUpdate()
     {
+
         if (health <= 0)
         {
             if (!playerBool)
@@ -40,7 +45,7 @@ public class BasicPokemon : MonoBehaviour { // I am using type object for pokemo
             }
             else
             {
-                Debug.Log("GameOver");
+                Application.Quit();
             }
         }
         if (charge < 100)
@@ -48,28 +53,44 @@ public class BasicPokemon : MonoBehaviour { // I am using type object for pokemo
 
 
         if (playerBool == false)
+        {
             if (charge >= 100)
             {
 
-                useMove(movecycle);
-                if (movecycle > 4)
-                {
-                    movecycle = 1;
-                }
+                useMove(1);
+
+
+
+
+
+
+
+
             }
+            if (Vector3.Magnitude(targetLocation - gameObject.transform.position) >= toTargetspeed)
+                gameObject.transform.position += toTargetspeed * Vector3.Normalize(targetLocation - gameObject.transform.position);
+            else
+                gameObject.transform.position = targetLocation; 
+        }
 
     }
 
+    
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("contact 0");
-        //Debug.Log("hit something not a bullet");
+
+        if (playerBool != true)
+        { Debug.Log("contact 0"); }
+        
         BasicBullet hitobject = collision.gameObject.GetComponent<BasicBullet>();
+
+
         if (hitobject != null)
         {
             //Debug.Log("contact A");
             //Debug.Log("hit something not a bullet");
-            if (hitobject.player != playerBool)
+            if (hitobject.playerbool != playerBool)
             {
                 //Debug.Log("contact B");
                 health -= 1;

@@ -2,7 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour {
+public sealed class PlayerScript : MonoBehaviour {  //I am using a signleton for PlayerScript.  only one object of this class should ever exist.
+
+
+
+
+
+
+    public static PlayerScript Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
     public GameObject playerObject;
 
     Vector3 direction;
@@ -13,10 +32,16 @@ public class PlayerScript : MonoBehaviour {
 	void Start () {
         playerPokemon = playerObject.GetComponent<BasicPokemon>();
         playerPokemon.playerBool = true;
+
+
+
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+
+
 
         if (playerPokemon.charge >= 100)     //in future edits i probably will move the place where it checks the charge to someplace else;
         {

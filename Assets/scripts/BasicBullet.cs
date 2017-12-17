@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicBullet : MonoBehaviour {  // i will probably add more kinds of bullets to the use Type Object pattern with this as the base
 
-    public bool player;
+    public bool playerbool;
     public Vector3 velocity;
 
 
@@ -69,12 +69,63 @@ public class BasicBullet : MonoBehaviour {  // i will probably add more kinds of
     {
         switch (bulletype)
         {
-        case typing.FIRE:
-            if (enemytype == typing.WATER)  //if a fire bullet hits a water bullet then the water bullet is destroyed;
+            case typing.NORMAL:
+                break;
+            case typing.BUG:
+                break;
+            case typing.DRAGON:
+                if (enemytype == typing.FAIRY)  //if a fire bullet hits a water bullet then the water bullet is destroyed;
                 {
                     return -1;
                 }
                 break;
+            case typing.ELECTRIC:
+                if (enemytype == typing.GROUND)
+                {
+                    return -1;
+                }
+                break;
+            case typing.FAIRY:
+                break;
+            case typing.FIGHTING:
+                break;
+            case typing.FIRE:
+                if (enemytype == typing.WATER)  //if a fire bullet hits a water bullet then the water bullet is destroyed;
+                {
+                    return -1;
+                }
+                break;
+            case typing.FLYING:
+                break;
+            case typing.GHOST:
+                break;
+            case typing.GRASS:
+                if (enemytype == typing.FIRE)
+                {
+                    return -1;
+                }
+                break;
+            case typing.GROUND:
+                
+                break;
+            case typing.ICE:
+                if (enemytype == typing.FIRE)
+                {
+                    return -1;
+                }
+                break;
+            case typing.POISON:
+                break;
+            case typing.PSYCHIC:
+                break;
+            case typing.ROCK:
+                break;
+            case typing.STEEL:
+                break;
+            case typing.WATER:
+                break;
+
+                
         }
 
 
@@ -87,8 +138,7 @@ public class BasicBullet : MonoBehaviour {  // i will probably add more kinds of
         BasicBullet hitobject = collision.gameObject.GetComponent<BasicBullet>();
         if (hitobject != null)
         {
-            Debug.Log("a bullet hit another bullet");
-            if (hitobject.player != player)
+            if (hitobject.playerbool != playerbool)
             {
                 if (typeEffectiveness(hitobject.bulletype) == -1)
                     Destroy(gameObject);

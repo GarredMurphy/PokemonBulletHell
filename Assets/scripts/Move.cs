@@ -2,7 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour { // i may later change this to use a different design pattern if it works better.
+public class Move : MonoBehaviour { // This is now using singleton. only one object of this class should ever exist.
+
+
+    public static Move Instance { get; private set; }
+
+
+
+
+
+
+
 
     public GameObject[] NPCBulletList;
 
@@ -43,6 +53,16 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
 
     public void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+
+
 
         for (int i = 0; i <= 18; i++)
         {
@@ -93,7 +113,7 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
                     bulletsCreated = Instantiate(bulletList[18]);  //              in future edits of this,   
                     bulletsCreated.transform.position = position;  //              i will make this part of the code
                     newBulletScript = bulletsCreated.GetComponent<BasicBullet>();//a seperate method so
-                    newBulletScript.player = player;//                             i won't have to copy so much for each move
+                    newBulletScript.playerbool = player;//                             i won't have to copy so much for each move
 
                     newBulletScript.velocity.y = 0.01f * (i + 1) * reverse;
 
@@ -106,7 +126,7 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
                     bulletsCreated = Instantiate(bulletList[8]);
                     bulletsCreated.transform.position = position;
                     newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
-                    newBulletScript.player = player;
+                    newBulletScript.playerbool = player;
 
                     newBulletScript.velocity.y = 0.01f * (i + 1) * reverse;
                     newBulletScript.velocity.x = Random.Range(0.005f, -0.005f);
@@ -121,7 +141,7 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
                     bulletsCreated = Instantiate(bulletList[8]);
                     bulletsCreated.transform.position = position;
                     newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
-                    newBulletScript.player = player;
+                    newBulletScript.playerbool = player;
 
                     newBulletScript.velocity.y = 0.07f;
 
@@ -145,7 +165,7 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
                     bulletsCreated = Instantiate(bulletList[12]);
                     bulletsCreated.transform.position = position;
                     newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
-                    newBulletScript.player = player;
+                    newBulletScript.playerbool = player;
 
                     newBulletScript.velocity = Vector3.up / 5;
 
@@ -162,7 +182,7 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
                     bulletsCreated = Instantiate(bulletList[8]);
                     bulletsCreated.transform.position = position;
                     newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
-                    newBulletScript.player = player;
+                    newBulletScript.playerbool = player;
 
                     newBulletScript.velocity = Vector3.up / Random.Range(50f, 100f);
 
@@ -175,20 +195,20 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
 
             case 5: //Judgement
 
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 20; i++)
                 {
 
                     bulletsCreated = Instantiate(bulletList[ Random.Range(1, 19) ] );
 
                     bulletsCreated.transform.position = position;
                     newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
-                    newBulletScript.player = player;
+                    newBulletScript.playerbool = player;
 
-                    newBulletScript.velocity.y = Random.Range(0f, .15f);
+                    newBulletScript.velocity.y = Random.Range(0f, .1f);
 
 
                     newBulletScript.velocity = Quaternion.Euler(0, 0, Random.Range(0,360)) * newBulletScript.velocity;
-                    newBulletScript.velocity.y += reverse * .15f;
+                    newBulletScript.velocity.y += reverse * .07f;
 
                 }
                 break;
@@ -199,10 +219,40 @@ public class Move : MonoBehaviour { // i may later change this to use a differen
                     bulletsCreated = Instantiate(bulletList[5]);  //              in future edits of this,   
                     bulletsCreated.transform.position = position;  //              i will make this part of the code
                     newBulletScript = bulletsCreated.GetComponent<BasicBullet>();//a seperate method so
-                    newBulletScript.player = player;//                             i won't have to copy so much for each move
+                    newBulletScript.playerbool = player;//                             i won't have to copy so much for each move
 
                     newBulletScript.velocity.y = 0.01f * (i + 1) * reverse;
 
+                }
+                break;
+            case 7:  // splash
+
+                
+                Vector3 direction = Quaternion.Euler(0, 0, Random.Range(0, 360)) * Vector3.down;
+
+                for (int i = 0; i < 4; i++)
+                {
+                    bulletsCreated = Instantiate(bulletList[1]);           
+                    bulletsCreated.transform.position = position;  
+                    newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
+                    newBulletScript.playerbool = player;
+
+                   
+
+                    newBulletScript.velocity = Quaternion.Euler(0, 0, i * 90) * direction / 50;
+                }
+                break;
+            case 8: // vine whip
+                for (int i = 0; i < 5; i++)
+                {
+                    bulletsCreated = Instantiate(bulletList[11]);   
+                    bulletsCreated.transform.position = position;
+                    newBulletScript = bulletsCreated.GetComponent<BasicBullet>();
+                    newBulletScript.playerbool = player;
+
+                    newBulletScript.velocity.y = 0.01f * (i + 5) * reverse;
+
+                    newBulletScript.velocity = Quaternion.Euler(0, 0, (i * 2) - 4) * newBulletScript.velocity;
                 }
                 break;
         }
